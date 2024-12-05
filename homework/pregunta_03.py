@@ -15,3 +15,28 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
+
+    diccionario = {}
+
+    with open('files/input/data.csv', "r", encoding="utf-8") as file:
+        for line in file:
+            key = line[0]
+            if key in diccionario:
+                diccionario[key] += int(line[2])
+            else:
+                diccionario[key] = int(line[2])
+
+    lista = []
+
+    print(diccionario)
+
+    for i in diccionario:
+        print(i)
+        lista.append((i, diccionario[i]))
+
+    lista = sorted(lista)
+    print(lista)
+
+    return lista
+
+pregunta_03()

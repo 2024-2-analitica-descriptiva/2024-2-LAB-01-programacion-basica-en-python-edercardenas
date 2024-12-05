@@ -26,3 +26,36 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+    lista_1 = []
+    with open('files/input/data.csv', "r", encoding="utf-8") as file:
+        for line in file:
+            line = line.strip().split('\t')[4].split(',')
+            lista_1 += line
+            print(line)
+        print(lista_1)
+    
+    diccionario = {}
+
+    for elemento in lista_1:
+        key = elemento[0:3]
+        val = int(elemento[4:])
+        if key in diccionario:
+            diccionario[key][0] = val if val < diccionario[key][0] else diccionario[key][0]
+            diccionario[key][1] = val if val > diccionario[key][1] else diccionario[key][1]
+        else:
+            diccionario[key] = [val, val]
+
+    print(diccionario)
+
+    lista = []
+
+    for i in diccionario:
+        print(i)
+        lista.append((i, diccionario[i][0], diccionario[i][1]))
+
+    lista = sorted(lista)
+    print(lista)
+
+    return lista
+
+pregunta_06()

@@ -24,3 +24,26 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    lista_1 = []
+    with open('files/input/data.csv', "r", encoding="utf-8") as file:
+        for line in file:
+            line = line.strip().split('\t')[4].split(',')
+            lista_1 += line
+            # print(line)
+        print(lista_1)
+        lista_1 = sorted(lista_1)
+    
+    diccionario = {}
+
+    for elemento in lista_1:
+        key = elemento[0:3]
+        if key in diccionario:
+            diccionario[key] += 1
+        else:
+            diccionario[key] = 1
+
+    print(diccionario)
+
+    return diccionario
+
+pregunta_09()

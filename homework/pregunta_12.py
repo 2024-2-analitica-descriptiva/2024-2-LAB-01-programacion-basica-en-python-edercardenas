@@ -15,3 +15,24 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+    lista = []
+    with open('files/input/data.csv', "r", encoding="utf-8") as file:
+        for line in file:
+            elem_col_5 = line.strip().split('\t')[4].split(',')
+            for sub_elem in elem_col_5:
+                lista.append([line[0], int(sub_elem[4:])])
+        print(lista)
+    lista = sorted(lista)
+    
+    diccionario = {}
+    for i in lista:
+        key = i[0]
+        val = i[1]
+        if key in diccionario:
+            diccionario[key] += val
+        else:
+            diccionario[key] = val
+    print(diccionario)
+    return diccionario
+
+pregunta_12()
